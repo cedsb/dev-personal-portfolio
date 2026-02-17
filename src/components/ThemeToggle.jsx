@@ -27,6 +27,7 @@ export default function ThemeToggle() {
       size="sm"
       className="dark:text-primary transition"
     >
+      <p className="flex md:hidden text-md">Switch to</p>
       {isDark ? <Sun /> : <Moon />}
     </Button>
   );

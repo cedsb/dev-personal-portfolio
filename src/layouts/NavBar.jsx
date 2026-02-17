@@ -5,6 +5,7 @@ import { FileDown, Menu, X } from "lucide-react"
 import ThemeToggle from "../components/ThemeToggle.jsx"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 import {
   Drawer,
@@ -16,6 +17,34 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+
+const navItems = [
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Contact", path: "/contact" },
+]
+
+const navLinks = ({ direction = "horizontal", onLinkClick}) => {
+  const layout = 
+    direction === "horizontal"
+      ? "flex gap-8 text-lg font-mono"
+      : "flex flex-col items-center gap-6 text-lg font-mono"
+
+  return (
+    <div className={layout}>
+      {navItems.map((item) => (
+        <Link 
+          key={item.path}
+          to={item.path}
+          onClick={onLinkClick}
+          className="text-muted-foreground hover:text-primary transition"
+        >
+          {item.name}
+        </Link>
+      ))}
+    </div>
+  )
+}
 
 export const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -30,16 +59,14 @@ export const NavBar = () => {
               <span className="font-mono font-bold text-xl text-primary">Cedrick Steven</span>
             </div>
 
-            {/* Nav Links */}
-            <div className="hidden md:flex gap-8 text-lg font-mono">
-              <Link to="/about" className="text-muted-foreground hover:text-primary">About</Link>
-              <Link to="/projects" className="text-muted-foreground hover:text-primary">Projects</Link>
-              <Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link>
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex">
+              {navLinks({ direction: "horizontal" })}
             </div>
 
             {/* Theme & CTA */}
             <div className="hidden md:flex items-center gap-2">
-              
+              <ThemeToggle />
               <Separator orientation="vertical" className="h-6" />
               <Button variant="ghost" size="sm" className="font-mono text-lg bg-primary dark:bg-primary hover:bg-primary/60">
                 <FileDown data-icon="inline-start" className="text-primary-foreground dark:text-primary-foreground"/>
@@ -47,38 +74,30 @@ export const NavBar = () => {
               </Button>
             </div>
 
-            {/* Mobile Hamburger Button */}
-            {/* <Button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-
-            </Button> */}
-
-            <Drawer direction="down" className="hidden md:flex">
+            {/* Mobile Drawer */}
+            <Drawer direction="down" open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <DrawerTrigger asChild>
-                <Button variant="outline">Scrollable Content</Button>
+                <Button className={`md:hidden transition-all duration-2000 ${isMenuOpen ? 'animate-iconMorph' : ''}`} variant="icon" size="icon">
+                  {isMenuOpen ? <X className="text-primary size-6!"/> : <Menu className="text-primary size-6!"/>}
+                </Button>
               </DrawerTrigger>
-              <DrawerContent className="">
+              <DrawerContent className="font-mono">
                 <DrawerHeader>
-                  <DrawerTitle>Move Goal</DrawerTitle>
-                  <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+                  <DrawerTitle className="text-primary">Navigation</DrawerTitle>
+                  <DrawerDescription>Explore the site's sections.</DrawerDescription>
                 </DrawerHeader>
-                <div className="no-scrollbar overflow-y-auto px-4">
-                  <p className="mb-4 leading-normal">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                      enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                      reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                      nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                      sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                <div className="px-6 py-6 space-y-8">
+                  {navLinks({ direction: "vertical", onLinkClick: () => setIsMenuOpen(false) })}
+                  <div className="flex justify-center items-center gap-4 border-t pt-4 border-primary/40">
+                    <ThemeToggle />
+                    <Button variant="ghost" className="bg-primary hover:bg-primary/60">
+                      <FileDown className="text-primary-foreground" />
+                      <span className="text-primary-foreground">
+                        My Resume
+                      </span>
+                    </Button>
+                  </div>
                 </div>
-                <ThemeToggle />
-                <DrawerFooter>
-                  <Button>Submit</Button>
-                  <DrawerClose asChild>
-                    <Button variant="outline">Cancel</Button>
-                  </DrawerClose>
-                </DrawerFooter>
               </DrawerContent>
             </Drawer>
           </div>
