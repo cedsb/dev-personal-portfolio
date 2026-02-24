@@ -17,9 +17,9 @@ export default {
                     to: { transform: 'translateY(100%)' },
                 },
                 iconMorph: {
-                    '0%': { transform: 'scale(1.3)', opacity: '0' },
-                    '65%': { opacity: '0.8' },
-                    '100%': { transform: 'scale(1)', opacity: '1' },
+                    from: { transform: 'scale(1.3)', opacity: '0' },
+                    to: { opacity: '0.8' },
+                    to: { transform: 'scale(1)', opacity: '1' },
                 },
             },
             animation: {

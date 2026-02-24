@@ -24,11 +24,11 @@ export default function ThemeToggle() {
     <Button
       onClick={toggleTheme}
       variant="ghost"
-      size="sm"
-      className="dark:text-primary transition"
+      size="lg"
+      className="dark:text-primary transition px-2 md:rounded-full"
     >
       <p className="flex md:hidden text-md">Switch to</p>
-      {isDark ? <Sun /> : <Moon />}
+      {isDark ? <Sun className="size-5!"/> : <Moon className="size-5!"/>}
     </Button>
   );
 }
