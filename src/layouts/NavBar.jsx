@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link, NavLink } from "react-router"
 
 import { FileDown, Menu, X } from "lucide-react"
-import ThemeToggle from "../components/ThemeToggle.jsx"
+import ThemeToggle from "../components/custom/ThemeToggle.jsx"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 
