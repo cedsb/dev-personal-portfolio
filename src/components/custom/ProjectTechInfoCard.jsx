@@ -21,7 +21,7 @@ export default function ProjectTechInfoCard ({ id }) {
     <Card className="w-full border-primary/20 overflow-hidden mb-6">
         <CardHeader>
             <CardTitle className="text-3xl font-extrabold font-sans">{project.title}</CardTitle>
-            <p>
+            <div>
                 {project.technologies.map((tech) => {
                     const Icon = tech.icon
             
@@ -39,7 +39,7 @@ export default function ProjectTechInfoCard ({ id }) {
                         </Badge>
                     )
                 })}
-            </p>
+            </div>
             <CardDescription className="flex items-center gap-2">{project.shortDescription}</CardDescription>
         </CardHeader>
         <CardContent className="flex gap-2">

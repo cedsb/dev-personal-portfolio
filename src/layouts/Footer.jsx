@@ -7,7 +7,7 @@ export const Footer = () => {
         © 2026 Cedrick Steven | All rights reserved.
       </div>
       <div className="pt-2">
-        Built with React, Tailwind CSS, and Radix UI. Hosted on Vercel.
+        Built with React, Tailwind CSS, and Radix UI. Hosted on Render.
       </div>
     </div>
   )
