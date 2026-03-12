@@ -1,5 +1,3 @@
-
-
 export const Footer = () => {
   return (
     <div className="mt-4 max-w-5xl my-16 mx-auto text-center text-md text-primary">
@@ -7,7 +5,7 @@ export const Footer = () => {
         © 2026 Cedrick Steven | All rights reserved.
       </div>
       <div className="pt-2">
-        Built with React, Tailwind CSS, and Radix UI. Hosted on Render.
+        Built with React, Tailwind CSS, and ShadCN UI. Hosted on Render.
       </div>
     </div>
   )
