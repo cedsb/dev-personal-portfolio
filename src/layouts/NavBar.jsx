@@ -67,9 +67,11 @@ export const NavBar = () => {
             <div className="hidden md:flex items-center gap-2">
               <ThemeToggle />
               <Separator orientation="vertical" className="h-6" />
-              <Button variant="ghost" size="lg" className="font-mono text-xl bg-primary dark:bg-primary hover:bg-primary/60 gap-4 px-4">
-                <FileDown data-icon="inline-start" className="size-6! text-primary-foreground dark:text-primary-foreground"/>
-                <p className="text-primary-foreground dark:text-primary-foreground font-semibold">My Resume</p>
+              <Button asChild variant="ghost" size="lg" className="font-mono text-xl bg-primary dark:bg-primary hover:bg-primary/60 gap-4 px-4">
+                <a href="/documents/Bano-Resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <FileDown data-icon="inline-start" className="size-6! text-primary-foreground dark:text-primary-foreground"/>
+                  <p className="text-primary-foreground dark:text-primary-foreground font-semibold">My Resume</p>
+                </a>
               </Button>
             </div>
 
@@ -89,11 +91,11 @@ export const NavBar = () => {
                   {navLinks({ direction: "vertical", onLinkClick: () => setIsMenuOpen(false) })}
                   <div className="flex justify-center items-center gap-4 border-t pt-4 border-primary/40">
                     <ThemeToggle />
-                    <Button variant="ghost" className="bg-primary hover:bg-primary/60">
-                      <FileDown className="size-5! text-primary-foreground" />
-                      <span className="text-primary-foreground">
-                        My Resume
-                      </span>
+                    <Button asChild variant="ghost" className="bg-primary hover:bg-primary/60 gap-2">
+                      <a href="/documents/Bano-Resume.pdf" target="_blank" rel="noopener noreferrer">
+                        <FileDown className="size-5 text-primary-foreground" />
+                        <span className="text-primary-foreground">My Resume</span>
+                      </a>
                     </Button>
                   </div>
                 </div>
